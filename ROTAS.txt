@@ -1,0 +1,76 @@
+==========================ROTAS===================================
+
+/*
+Route::prefix('/aplicacao') ->group( function(){
+
+    Route::get('/', function () {
+        return view ('app');
+    })->name('app');
+
+    Route::get('/user', function () {
+        return view ('user');
+    })->name('app.user');
+
+    Route::get('/profile', function () {
+        return view ('profile');
+    })->name('app.profile');
+});
+
+Route::get('/Produtos', function () {
+    echo "<h1>Produtos</h1>";
+    echo "<ol>";
+    echo "<li> Notebook </li>";
+    echo "<li> Impressora </li>";
+    echo "<li> Mouse </li>";
+    echo "</ol>";
+})->name('meusprodutos');
+
+Route::redirect('todosprodutos1', 'produtos', 301);
+
+Route::get('todosprodutos2', function (){
+    return redirect()->route('meusprodutos');
+});
+
+Route::post('/requisicoes' , function(Request $request){
+    return "Hello POST";
+});
+
+
+Route::delete('/requisicoes' , function(Request $request){
+    return "Hello delete";
+});
+
+
+Route::put('/requisicoes' , function(Request $request){
+    return "Hello put";
+});
+
+
+Route::patch('/requisicoes' , function(Request $request){
+    return "Hello patch";
+});
+
+
+Route::options('/requisicoes' , function(Request $request){
+    return "Hello options";
+});
+
+
+
+
+Route::get('/requisicoes' , function(Request $request){
+    return "Hello get";
+});
+
+
+==================Profile.blade.php===========================================
+
+<h1>profile</h1>
+
+<div>
+<a href={{route('app.user')}}>User</a><br>
+<a href="{{route('app.profile')}}">Profile</a><br>
+<a href="{{route('app')}}">App</a><br>
+<a href="{{route('meusprodutos')}}">Produtos</a><br>
+
+</div>
