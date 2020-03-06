@@ -27,9 +27,10 @@ class ClienteControlador extends Controller
      */
     public function index()
     {
-        //acessar rota e mostrar clientes
+         //acessar rota e mostrar clientes
         $clientes = session('clientes');
-       return view('clientes.index' , compact(['clientes']));
+        $titulo = "todos os clientes";
+       return view('clientes.index' , compact(['clientes' , 'titulo']));
     }
 
     /**
@@ -122,9 +123,11 @@ class ClienteControlador extends Controller
 }
 
 =========================================================================================================================================
-index blade 
-<h3>Clientes</h3>
+index blade
+<h3>{{$titulo}}:</h3>
 <a href="{{route('clientes.create')}}">Novo Cliente</a>
+
+@if(count($clientes)>0);
 <ol>
     @foreach ($clientes as $c)
 <li>{{$c['nome']}} |
@@ -140,6 +143,15 @@ index blade
     @endforeach
    
 </ol>
+@else
+
+<h4>Nao existem usuarios cadastrados</h4>
+
+@endif
+
+@empty($clientes)
+<h4>Nao existem clientes </h4>
+@endempty
 =====================================================================================
 info blade
 <h3>informaçoes do clinte</h3>
